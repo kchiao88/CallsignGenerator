@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <style>
+            #loading {
+                width: 64px;
+            }
+            .hidden {
+                display: none;
+            }
+            #submit {
+                font-size: 24px;
+            }
+            #search-entries tr td {
+                background-color: rgb(118, 118, 120);
+            }
+            #saved-entries tr td {
+                background-color: rgb(64, 114, 93);
+            }
+            #display {
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+        </style>
+    </head>
+    <body>
+        <p>Add input, button and p elements - all w ids</p>
+        <input type="text" id="input"/>
+        <button id="submit">Submit</button>
+        <img src="/loading.gif" id="loading" class="hidden"/>
+        <table id="search-entries"></table>
+        <table id="saved-entries"></table>
+        <span id="display"></span>
+        <script src="main.js">
+        </script>
+    </body>
+</html>
