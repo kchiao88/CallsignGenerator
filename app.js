@@ -1,13 +1,21 @@
 const express = require('express');
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
+const path = require("path");
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    const absolutePath = path.resolve("./public/views/index.html");
+    res.sendFile(absolutePath);
 })
 
 app.get('/getLicense', (req, res) => {
-    res.send('World Hello!')
+    // TODO: GRAB CALLSIGN FROM PARAMETERS LIST IN URL
+    const absolutePath = path.resolve("./public/views/lookup.html");
+    res.sendFile(absolutePath);
+})
+
+app.post('/getLicense', (req, res) => {
+    console.log("Hi");
 })
 
 app.get('/licenses', (req, res) => {
