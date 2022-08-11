@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3000
 const path = require("path");
 
 app.get('/', (req, res) => {
@@ -16,6 +16,7 @@ app.get('/getLicense', (req, res) => {
 
 app.post('/getLicense', (req, res) => {
     console.log("Hi");
+    res.send("/getLicense done.")
 })
 
 app.get('/licenses', (req, res) => {
@@ -23,5 +24,5 @@ app.get('/licenses', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Radio Callsign app listening on port ${port}`)
 })
