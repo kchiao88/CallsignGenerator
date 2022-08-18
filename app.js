@@ -14,7 +14,11 @@ app.get('/getLicense', (req, res) => {
     res.sendFile(absolutePath);
 })
 
-app.post('/getLicense', (req, res) => {
+app.post('/getLicense', 
+    (req, res) => {
+        
+    },
+    (req, res) => {
     console.log("Hi");
     res.send("/getLicense done.")
 })
