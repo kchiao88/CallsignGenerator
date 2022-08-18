@@ -8,3 +8,10 @@
     licenseCache[callsign] = data;
     return new Response(JSON.stringify(data, null, 4));
 */
+function processLookupCallsign() { 
+    const submitButton = document.getElementById("submit-callsign");
+    submitButton.onclick = (event) => {
+        console.log("Testing321");
+    };
+};
+module.exports.processLookupCallsign = processLookupCallsign;
