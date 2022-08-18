@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000
 const path = require("path");
+const lookupLogic = require("./public/javascript/frontend/lookup");
 
 app.get('/', (req, res) => {
     const absolutePath = path.resolve("./public/views/index.html");
@@ -15,9 +16,7 @@ app.get('/getLicense', (req, res) => {
 })
 
 app.post('/getLicense', 
-    (req, res) => {
-        
-    },
+    lookupLogic.processLookupCallsign,
     (req, res) => {
     console.log("Hi");
     res.send("/getLicense done.")
