@@ -8,3 +8,7 @@
     licenseCache[callsign] = data;
     return new Response(JSON.stringify(data, null, 4));
 */
+
+const submitButton = document.getElementById("submit-callsign");
+
+submitButton.on
