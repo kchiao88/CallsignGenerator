@@ -13,10 +13,7 @@ router.get('/getLicense', (req, res) => {
 })
 
 router.post('/getLicense', 
-    lookupLogic.processLookupCallsign,
-    (req, res) => {
-    console.log("Hi");
-    res.send("/getLicense done.")
-})
+    lookupLogic.processLookupCallsign
+)
 
 module.exports = router; 
