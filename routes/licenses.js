@@ -12,6 +12,14 @@ router.get('/getLicense', (req, res) => {
     res.render("lookup");
 })
 
+router.get('/deleteLicense', (req, res) => {
+    res.render("delete");
+})
+
+router.post('/deleteLicense', 
+    lookupLogic.processDeleteCallsign
+)
+
 router.post('/getLicense', 
     lookupLogic.processLookupCallsign
 )
