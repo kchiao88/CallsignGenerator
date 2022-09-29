@@ -21,7 +21,19 @@ async function processLookupCallsign(req, res, next) {
     })
 
     //res.render() //unlock once we create a results page. 
-    res.send(data); 
+    res.render("display", {callsign: callsign, 
+        latitude: data.location.latitude, 
+        longitude: data.location.longitude,
+        status: data.status,
+        class: data.current.operClass,
+        name: data.name,
+        frn: data.otherInfo.frn,
+        address: data.address.line2,
+        grid: data.location.gridsquare,
+        grantDate: data.otherInfo.grantDate,
+        expiryDate: data.otherInfo.expiryDate,
+        url: data.otherInfo.ulsUrl
+    }); 
 }
 lookupLogic.processLookupCallsign = processLookupCallsign;
 async function processDeleteCallsign(req, res, next) {
