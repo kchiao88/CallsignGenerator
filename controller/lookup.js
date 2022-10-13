@@ -12,7 +12,6 @@ async function processLookupCallsign(req, res, next) {
             console.log("File already exists")
         } else {
             console.log("File doesn't exist")
-            next()
         }
     } )) {
         console.log("Case 1")
@@ -72,36 +71,6 @@ async function processLookupCallsign(req, res, next) {
         }
 
     }
-    // fetching callsign data from site
-    let data = await fetch(`https://callook.info/${callsign}/json`)
-        .then(response => response.json())
-    if (data.status === "INVALID") {
-        res.send("Not found")
-    }
-    // Creating new JSON file to store callsign data 
-    const fileName = "./licenses/" + callsign + ".json";
-    fs.writeFile(fileName, JSON.stringify(data), (error)=>{
-        if (error) {
-            console.log(error);
-        } else {
-            console.log("Success");
-        }
-    })
-
-    // Pulling callsign information from data variable
-    res.render("display", {callsign: callsign, 
-        latitude: data.location.latitude, 
-        longitude: data.location.longitude,
-        status: data.status,
-        class: data.current.operClass,
-        name: data.name,
-        frn: data.otherInfo.frn,
-        address: data.address.line2,
-        grid: data.location.gridsquare,
-        grantDate: data.otherInfo.grantDate,
-        expiryDate: data.otherInfo.expiryDate,
-        url: data.otherInfo.ulsUrl
-    }); 
 }
 lookupLogic.processLookupCallsign = processLookupCallsign;
 async function processDeleteCallsign(req, res, next) {
