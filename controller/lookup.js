@@ -80,10 +80,10 @@ async function processDeleteCallsign(req, res, next) {
         let path = "./licenses/" + callsign + ".json";
         if (err) {
             console.error(err);
-            res.send(err);
+            next()
         } else {
             console.log("File removed:", path);
-            res.send("Success");
+            res.render("onSuccessDelete");
         }
     });
     // TODO: Use fs to delete the file
