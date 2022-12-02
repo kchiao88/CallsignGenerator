@@ -18,11 +18,13 @@ router.post('/registration', function(req, res, next) {
   const emailRe = /^\w+@([a-zA-Z_]|[0-9])+?\.[a-zA-Z]{2,3}$/
   const emailCheck = emailAddress.match(emailRe)
   console.log(emailCheck)
-  if (emailCheck) {
+  const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$/
+  const passwordCheck = password.match(passwordRe)
+  console.log(passwordCheck)
+  if (passwordCheck) {
     res.send("Success")
   } else {
     res.send("Failure")
-    // To-Do: Add middleware that warns people
   }
 })
 
