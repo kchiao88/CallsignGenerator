@@ -1,8 +1,10 @@
 const fs = require('fs');
+const bcrypt = require('bcrypt');
 
 const indexLogic = {};
 
 // TODO: Create the middleware logic for the login, logout and registration mechanic here.
+const properAccessKey = "6417Key"
 
 function processRegistration(req, res, next) {
     const username = req.body.username; 
@@ -14,8 +16,11 @@ function processRegistration(req, res, next) {
     const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$/; 
     const passwordCheck = password.match(passwordRe); 
 
-    if (passwordCheck) {
-        res.send("Hello World"); 
+    console.log(emailCheck + " : emailCheck"); 
+    console.log(accessKey === properAccessKey + " :accessKey"); 
+    if (passwordCheck && emailCheck && accessKey === properAccessKey) {
+        res.send("Hello World");
+        // TODO: Use BCrypt and store the Account information into the User Data table. 
     } else {
         res.send("Failure"); 
     }
