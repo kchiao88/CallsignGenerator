@@ -20,7 +20,20 @@ function processRegistration(req, res, next) {
     console.log(accessKey === properAccessKey + " :accessKey"); 
     if (passwordCheck && emailCheck && accessKey === properAccessKey) {
         res.send("Hello World");
-        // TODO: Use BCrypt and store the Account information into the User Data table. 
+        // TODO: Use BCrypt and store the Account information into the User Data table.
+        let hashPassword = null;
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(password, salt, function(err, hash) {
+                console.log(hash);
+                if (err) {
+                    console.log(err);
+                    next(err);
+                }
+                hashPassword = hash;
+            })
+        })  
+
+
     } else {
         res.send("Failure"); 
     }

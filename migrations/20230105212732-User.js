@@ -50,7 +50,7 @@ module.exports = {
         },
 
         radio_callsign: {
-          type: Sequelize.DataTypes.STRING,
+            type: Sequelize.DataTypes.STRING,
             allowNull: false,
             unique: true,
         }
