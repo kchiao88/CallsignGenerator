@@ -8,6 +8,9 @@ const indexLogic = {};
 const properAccessKey = "6417Key"
 
 async function processRegistration(req, res, next) {
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    const radiocallsign = req.body.radiocallsign;
     const username = req.body.username; 
     const password = req.body.password; 
     const emailAddress = req.body.email; 
@@ -34,7 +37,7 @@ async function processRegistration(req, res, next) {
             })
         })
         
-        await dbEngine.insertUser(username, emailAddress, first_name, last_name, hashPassword, radio_callsign);
+        await dbEngine.insertUser(username, emailAddress, firstname, lastname, hashPassword, radiocallsign);
         res.send("Success");
 
     } else {
