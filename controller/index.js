@@ -21,24 +21,24 @@ async function processRegistration(req, res, next) {
     const passwordCheck = password.match(passwordRe); 
 
     console.log(emailCheck + " : emailCheck"); 
-    console.log(accessKey === properAccessKey + " :accessKey"); 
-    if (passwordCheck && emailCheck && accessKey === properAccessKey) {
+    console.log(accessKey); 
+    if (passwordCheck && emailCheck) {
         // res.send("Hello World");
         // TODO: Use BCrypt and store the Account information into the User Data table.
         let hashPassword = null;
         bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(password, salt, function(err, hash) {
+            bcrypt.hash(password, salt, async function(err, hash) {
                 console.log(hash);
+                
                 if (err) {
                     console.log(err);
                     next(err);
                 }
-                hashPassword = hash;
+
+                await dbEngine.insertUser(username, emailAddress, firstname, lastname, hash, radiocallsign);
+                res.send("Success");
             })
         })
-        
-        await dbEngine.insertUser(username, emailAddress, firstname, lastname, hashPassword, radiocallsign);
-        res.send("Success");
 
     } else {
         res.send("Failure"); 

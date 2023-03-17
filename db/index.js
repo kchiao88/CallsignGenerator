@@ -4,13 +4,23 @@ Why useExpressMiddleware this file when you can useExpressMiddleware sequelize f
 const pgp = require('pg-promise')();
 // const fs = require("fs");
 
+/*
 const connectionConfig = {
     connectionString: process.env.DATABASE_URL,
     ssl:
-        process.env.NODE_ENV !== 'development' ? {
+        process.env.NODE_ENV === 'development' ? {
             require: true,
             rejectUnauthorized: false,
         } : false,
+};
+*/
+
+const connectionConfig = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        require: true,
+        rejectUnauthorized: false,
+    }, 
 };
 
 const db = pgp(connectionConfig);
