@@ -6,8 +6,12 @@ const pgp = require('pg-promise')();
 
 
 const connectionConfig = {
-    connectionString: "postgres://postgres:013107Kc$@localhost:5432/Callsign",
-    ssl: true,
+    connectionString: process.env.DATABASE_URL,
+    ssl:
+        process.env.NODE_ENV !== 'development' ? {
+            require: true,
+            rejectUnauthorized: false,
+        } : false,
 };
 
 /*
