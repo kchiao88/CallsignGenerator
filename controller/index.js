@@ -13,12 +13,13 @@ async function processRegistration(req, res, next) {
     const radiocallsign = req.body.radiocallsign;
     const username = req.body.username; 
     const password = req.body.password; 
+    const confirmpassword = req.body.confirmpassword;
     const emailAddress = req.body.email; 
     const accessKey = req.body.key; 
     const emailRe = /^\w+@([a-zA-Z_]|[0-9])+?\.[a-zA-Z]{2,3}$/; 
     const emailCheck = emailAddress.match(emailRe); 
     const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$/; 
-    const passwordCheck = password.match(passwordRe); 
+    const passwordCheck = password.match(passwordRe) && password.match(confirmpassword); 
 
     console.log(emailCheck + " : emailCheck"); 
     console.log(accessKey); 
